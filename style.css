@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+
+:root {
+    /* 16px*0.9375 = 15px as specified in style-guide.md
+    Use value relative to rem instead of 15px to take into account the default
+    font size set by the user agent. It is 16px by default but user may override
+    that value in browser settings.
+    Allows to take into account the wish of a user to have smaller/bigger text*/
+    font-size: 0.9375rem;
+
+    font-family: 'Poppins', sans-serif;
+
+    line-height: 1.7;
+
+    color: var(--color-grayish-blue);
+    background-color: var(--color-very-light-gray);
+
+    /* colors */
+    --color-red: hsl(0, 78%, 62%);
+    --color-cyan: hsl(180, 62%, 55%);
+    --color-orange: hsl(34, 97%, 64%);
+    --color-blue: hsl(212, 86%, 64%);
+
+    --color-very-dark-blue: hsl(234, 12%, 34%);
+    --color-grayish-blue: hsl(229, 6%, 66%);
+    --color-very-light-gray: hsl(0, 0%, 98%);
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-very-dark-blue);
+    margin: 0;
+}
+
+h1 {
+    font-weight: 200;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+h3 {
+    /* I set the size for h3 but use default UA style for h1 h2
+    It works where I tested it but could be a problem
+    A safer thing would be to define it explicitely for h1 and h2 */
+    font-size: 1.3em;
+}
+
+main {
+    margin-inline: 2rem;
+    margin-block: 3rem;
+}
+
+.hero {
+    text-align: center;
+
+
+    margin-bottom: 4rem;
+    max-width: 33rem;
+    margin-inline: auto;
+}
+
+.cards {
+    max-width: 75rem;
+    margin-inline: auto;
+}
+
+.card {
+    padding: 2rem;
+
+    margin-block: 2rem;
+
+    border-top: 4px solid;
+    border-radius: 4px;
+
+    box-shadow: 0px 0px 15px -5px hsl(200 50% 80%),
+        0px 15px 15px -1px hsl(209 54% 81% / 0.3);
+
+}
+
+.card--cyan {
+    border-top-color: var(--color-cyan);
+}
+
+.card--red {
+    border-top-color: var(--color-red);
+}
+
+.card--orange {
+    border-top-color: var(--color-orange);
+}
+
+.card--blue {
+    border-top-color: var(--color-blue);
+}
+
+.card__icon {
+    display: block;
+    margin-left: auto;
+    margin-top: 2.5rem;
+}
+
+@media (min-width: 800px) {
+
+    h1,
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .card {
+        margin: 0;
+    }
+
+    .cards :is(:nth-child(1 of .card), :nth-child(4 of .card)) {
+        grid-row: 1 / -1;
+    }
+
+    .cards :nth-child(2 of .card) {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        align-self: end;
+    }
+
+    .cards :nth-child(3 of .card) {
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+        align-self: start;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
